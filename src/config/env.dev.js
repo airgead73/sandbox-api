@@ -36,7 +36,6 @@ const clientOrigins = ["http://localhost:3000"];
 module.exports = {
   audience,
   domain,
-  serverPort,
   clientOriginUrl,
   clientOrigins,
 };

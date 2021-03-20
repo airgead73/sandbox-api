@@ -5,7 +5,7 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-const { clientOrigins, serverPort } = require("./config/env.dev");
+const { clientOrigins } = require("./config/env.dev");
 
 const { messagesRouter } = require("./messages/messages.router");
 
@@ -37,6 +37,8 @@ app.use(function (err, req, res, next) {
  * Server Activation
  */
 
-app.listen(serverPort, () =>
-  console.log(`API Server listening on port ${serverPort}`)
+const PORT = process.env.PORT || 6060
+
+app.listen(PORT, () =>
+  console.log(`API Server listening on port ${PORT}`)
 );
