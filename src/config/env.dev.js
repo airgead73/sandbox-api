@@ -4,7 +4,7 @@ dotenv.config();
 
 const audience = process.env.AUTH0_AUDIENCE;
 const domain = process.env.AUTH0_DOMAIN;
-//const serverPort = process.env.SERVER_PORT;
+const serverPort = process.env.SERVER_PORT || process.env.PORT;
 const clientOriginUrl = process.env.CLIENT_ORIGIN_URL;
 
 if (!audience) {
@@ -19,11 +19,11 @@ if (!domain) {
   );
 }
 
-// if (!serverPort) {
-//   throw new Error(
-//     ".env is missing the definition of a API_PORT environmental variable",
-//   );
-// }
+if (!serverPort) {
+  throw new Error(
+    ".env is missing the definition of a API_PORT environmental variable",
+  );
+}
 
 if (!clientOriginUrl) {
   throw new Error(
@@ -31,11 +31,12 @@ if (!clientOriginUrl) {
   );
 }
 
-const clientOrigins = ["http://localhost:3000"];
+const clientOrigins = [`${clientOriginUrl}`];
 
 module.exports = {
   audience,
   domain,
   clientOriginUrl,
+  serverPort,
   clientOrigins,
 };
