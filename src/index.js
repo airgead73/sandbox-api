@@ -37,7 +37,8 @@ app.use(function (err, req, res, next) {
  * Server Activation
  */
 
+const PORT = process.env.PORT || 6060
 
-app.listen(serverPORT, () =>
-  console.log(`API Server listening on port ${serverPORT}`)
+app.listen(PORT, () =>
+  console.log(`API Server listening on port ${PORT}`)
 );
